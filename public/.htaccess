@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Si el archivo/carpeta existe, mostrarlo
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Todo lo demás a index.php
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
+
+# Seguridad
+<Files ~ "^\.">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Evitar listado de directorios
+Options -Indexes

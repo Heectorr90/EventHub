@@ -1,0 +1,13 @@
+{
+  "name": "eventhub/app",
+  "description": "Sistema de gestión de eventos",
+  "type": "project",
+  "require": {
+    "php": "^8.0"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "echo 'EventHub instalado correctamente'"
+    ]
+  }
+}

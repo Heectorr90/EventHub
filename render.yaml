@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: eventhub
+    env: php
+    buildCommand: composer install --no-dev --optimize-autoloader
+    startCommand: php -S 0.0.0.0:10000 -t public
+    envVars:
+      - key: RENDER
+        value: true
+      - key: DB_HOST
+        fromDatabase:
+          name: eventhub_db
+          property: host
+      - key: DB_NAME
+        fromDatabase:
+          name: eventhub_db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: eventhub_db
+          property: user
+      - key: DB_PASS
+        fromDatabase:
+          name: eventhub_db
+          property: password
+
+databases:
+  - name: eventhub_db
+    databaseName: eventhub
+    user: eventhub_user
